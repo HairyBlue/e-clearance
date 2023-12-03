@@ -50,6 +50,7 @@ create TABLE if not EXISTS Students (
 create TABLE if not EXISTS Clearances(
 	clearanceId int auto_increment PRIMARY KEY,
 	dssc BOOLEAN DEFAULT FALSE,
+	lirc BOOLEAN DEFAULT FALSE,
 	cims BOOLEAN DEFAULT FALSE,
     lab BOOLEAN DEFAULT FALSE,
     csg BOOLEAN DEFAULT FALSE,
