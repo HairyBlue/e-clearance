@@ -4,4 +4,4 @@ $host = "localhost";
 $user = "root";
 $password = "";
 $database = "clearancesystem";
-$port = 3306;
+$port = 3310;
