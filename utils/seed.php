@@ -158,9 +158,8 @@ class Seed
 
 
 const DATA_PATH = __DIR__;
-require_once "config.php";
+$config = require_once "config.php";
 require DATA_PATH . "/data/user.php";
 
-
-$seed = new Seed($userSeed, $host, $user, $password, $database, $port);
+$seed = new Seed(...$config["database"]);
 $seed->run();

@@ -1,5 +1,5 @@
 <?php
-const MIGRATE_PATH = __DIR__ ;
+const MIGRATE_PATH = __DIR__;
 $config = require_once "config.php";
 function runMigration($script, $connection)
 {
@@ -12,7 +12,7 @@ function runMigration($script, $connection)
     }
 }
 
-$db = new mysqli($host, $user, $password, $database, $port);
+$db = new mysqli(...$config["database"]);
 
 if ($db->connect_error) {
     die("Database connection failed: " . $db->connect_error);

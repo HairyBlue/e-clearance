@@ -11,7 +11,7 @@ function runMigration($script, $connection)
     }
 }
 
-$db = new mysqli($host, $user, $password, $database, $port);
+$db = new mysqli(...$config["database"]);
 
 if ($db->connect_error) {
     die("Database connection failed: " . $db->connect_error);
