@@ -4,9 +4,9 @@ return [
     "database" => [
         "localhost",
         "root",
-        "",
+        "Hairyblue",
         "clearancesystem",
-        3310
+        3306
     ]
 ];
 // $host = "localhost";

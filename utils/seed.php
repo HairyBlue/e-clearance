@@ -161,5 +161,5 @@ const DATA_PATH = __DIR__;
 $config = require_once "config.php";
 require DATA_PATH . "/data/user.php";
 
-$seed = new Seed(...$config["database"]);
+$seed = new Seed($userSeed, ...$config["database"]);
 $seed->run();

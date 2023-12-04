@@ -40,7 +40,7 @@ function generateStaff($faker)
         $stack = [
             "email" => $faker->unique->email(),
             "password" => $faker->unique->userName(),
-            "name" => $faker->name,
+            "name" => $faker->name(),
             "staff_office_id" => $x + 1,
         ];
         array_push($staff, $stack);
