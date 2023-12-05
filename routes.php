@@ -4,3 +4,10 @@ $router->get("/about", "about.php");
 
 $router->get("/login", "auth/formlogin.php");
 $router->post("/store", "auth/store.php");
+$router->delete("/logout", "auth/destroy.php")->only("auth");
+
+$router->get("/student", "student/index.php")->only("auth")->role("STUDENT");
+
+$router->get("/staff", "staff/index.php")->only("auth")->role("STAFF");
+
+$router->get("/dean", "dean/index.php")->only("auth")->role("DEAN");

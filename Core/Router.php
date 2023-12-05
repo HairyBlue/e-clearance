@@ -14,6 +14,7 @@ class Router
             "controller" => $controller,
             "method" => $method,
             "middleware" => null,
+            "role" => null
         ];
         return $this;
     }
@@ -47,13 +48,26 @@ class Router
         $this->routes[array_key_last($this->routes)]["middleware"] = $key;
         return $this;
     }
+    public function role($key)
+    {
+        $this->routes[array_key_last($this->routes)]["role"] = $key;
+        return $this;
+    }
 
     public function route($uri, $method)
     {
         foreach ($this->routes as $route) {
             if ($route["uri"] === $uri && $route["method"] === strtoupper($method)) {
-                // Middleware::resolve($route["middleware"]);
 
+                if ($route["middleware"]) {
+                    if ($route["role"]) {
+                        if (verify() == $route["role"]) {
+                            $_SESSION["user"]["role"] = verify();
+                        } else {
+                            redirect("/");
+                        }
+                    } 
+                }
                 return require base_path("Http/controller/" . $route["controller"]);
             }
         }
@@ -66,5 +80,4 @@ class Router
         require base_path("views/{$code}.view.php");
         die();
     }
-
 }
