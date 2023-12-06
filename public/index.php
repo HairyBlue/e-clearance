@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+clearstatcache();
 const BASE_PATH = __DIR__ . "/../";
 require BASE_PATH . "Core/function.php";
 
