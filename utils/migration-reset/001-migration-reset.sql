@@ -29,7 +29,8 @@ insert into Offices (officeName) values ("DSSC"), ("LIRC"), ("CIMS"), ("LABORATO
 create TABLE if not EXISTS Users (
 	userId int auto_increment PRIMARY KEY,
 	email VARCHAR(191) not null UNIQUE,
-	password VARCHAR(191) not null
+	password VARCHAR(191) not null,
+	login BOOLEAN DEFAULT False
 );
 
 create TABLE if not EXISTS Roles(

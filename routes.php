@@ -9,5 +9,6 @@ $router->delete("/logout", "auth/destroy.php")->only("auth");
 $router->get("/student", "student/index.php")->only("auth")->role("STUDENT");
 
 $router->get("/staff", "staff/index.php")->only("auth")->role("STAFF");
+$router->patch("/staff/update", "staff/update.php")->only("auth")->role("STAFF");
 
 $router->get("/dean", "dean/index.php")->only("auth")->role("DEAN");

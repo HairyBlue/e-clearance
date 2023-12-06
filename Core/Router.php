@@ -66,8 +66,9 @@ class Router
                         } else {
                             redirect("/");
                         }
-                    } 
+                    }
                 }
+
                 return require base_path("Http/controller/" . $route["controller"]);
             }
         }
