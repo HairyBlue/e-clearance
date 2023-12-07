@@ -64,7 +64,7 @@ class Router
                         if (verify() == $route["role"]) {
                             $_SESSION["user"]["role"] = verify();
                         } else {
-                            redirect("/");
+                            redirect("/login");
                         }
                     }
                 }

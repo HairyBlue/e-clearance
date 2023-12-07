@@ -7,7 +7,7 @@
     <!-- Dropdown menu -->
     <div class="absolute">
         <div id="orderDropdown" class="z-10 hidden relative bg-white divide-gray-100 rounded-lg shadow w-28 dark:bg-gray-700">
-            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="orderDropdownDefaultButton">
                 <li>
                     <a href="/staff?student-year-level-order=ascending" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Ascending</a>
                 </li>

@@ -12,3 +12,4 @@ $router->get("/staff", "staff/index.php")->only("auth")->role("STAFF");
 $router->patch("/staff/update", "staff/update.php")->only("auth")->role("STAFF");
 
 $router->get("/dean", "dean/index.php")->only("auth")->role("DEAN");
+$router->patch("/dean/update", "dean/update.php")->only("auth")->role("DEAN");

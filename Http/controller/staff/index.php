@@ -22,6 +22,8 @@ if (isset($_GET["division-name"])) {
                       WHERE divisionName = ?";
     $status = database()->show($statusQuery, "s", [$_GET["division-name"]]);
 } elseif (isset($_GET["student-year-level-order"])) {
+
+    $orderBy = 'desc';
     if ($_GET["student-year-level-order"] == "ascending") {
         $statusQuery = "SELECT $office, studentId, name, course, year, divisionName from Students 
                             inner join Clearances 
@@ -29,10 +31,11 @@ if (isset($_GET["division-name"])) {
                             inner join Divisions
                             on student_division_id = divisionId
                             ORDER by year asc";
-        global $status;
+
         $status = database()->show($statusQuery);
     }
     if ($_GET["student-year-level-order"] == "descending") {
+
         $statusQuery = "SELECT $office, studentId, name, course, year, divisionName from Students 
                             inner join Clearances 
                             on studentId = student_id
@@ -49,7 +52,20 @@ if (isset($_GET["division-name"])) {
                     on student_division_id = divisionId
                     where name LIKE ?";
 
-    $status = database()->show($statusQuery, "s", ["%".$_GET["student-name"]."%"]);
+    $status = database()->show($statusQuery, "s", ["%" . $_GET["student-name"] . "%"]);
+} elseif (isset($_GET["status"])) {
+    $isApproved = 0;
+    if ($_GET["status"] == "approved") $isApproved = 1;
+    if ($_GET["status"] == "pending") $isApproved = 0;
+
+    $statusQuery = "SELECT $office, studentId, name, course, year, divisionName from Students 
+                    inner join Clearances 
+                    on studentId = student_id
+                    inner join Divisions
+                    on student_division_id = divisionId
+                    where $office = ?";
+
+    $status = database()->show($statusQuery, "i", [$isApproved]);
 } else {
     $statusQuery = "SELECT $office, studentId, name, course, year, divisionName from Students 
                     inner join Clearances 
@@ -69,5 +85,6 @@ $division = database()->show($divisionQuery);
 view("staff/index.view.php", [
     "profile" => $profile[0],
     "division" => $division,
-    "status" => $status
+    "status" => $status,
+    "count" => count($status),
 ]);

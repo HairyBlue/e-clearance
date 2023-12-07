@@ -1,6 +1,6 @@
 <?php require base_path("views/partials/head.php") ?>
 <main class="w-full h-screen flex items-center justify-center">
-    <div class="w-[60%] border p-4 shadow-lg rounded-xl">
+    <div class="lg:w-[60%] w-full border p-4 shadow-lg lg:rounded-xl">
         <div class="lg:flex lg:items-center lg:justify-between">
             <div class="min-w-0 flex-1">
                 <div class="flex justify-between">
@@ -12,8 +12,8 @@
                 </div>
 
 
-                <div class="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6">
-                    <div class="mt-2 flex items-center text-sm text-gray-700">
+                <div class="flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6">
+                    <div class="flex items-center text-sm text-gray-700">
                         <p class="mr-2 font-semibold">Course and Year:</p>
                         <?= htmlspecialchars($profile["course"]) ?> -
                         <?= htmlspecialchars($profile["year"]) ?>
@@ -26,7 +26,7 @@
                 </div>
             </div>
         </div>
-        <div class="mt-4 pr-8 pl-8">
+        <div class="mt-4 lg:pr-8 lg:pl-8">
             <h3 class="font-bold text-4xl mb-4">Clearance Status</h3>
             <div class="relative overflow-x-auto">
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">

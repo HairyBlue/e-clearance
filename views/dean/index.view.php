@@ -12,8 +12,8 @@
                 </div>
                 <div class="flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6">
                     <div class="flex items-center text-lg text-gray-700">
-                        <p class="mr-2 font-semibold">Office:</p>
-                        <?= htmlspecialchars($profile["officeName"]) ?>
+                        <p class="mr-2 font-semibold">Division:</p>
+                        <?= htmlspecialchars($profile["divisionName"]) ?>
                     </div>
                 </div>
             </div>
@@ -26,7 +26,6 @@
                 <div class="flex gap-2">
                     <?php require base_path("views/partials/dropDownStatus.php") ?>
                     <?php require base_path("views/partials/orderByYear.php") ?>
-                    <?php require base_path("views/partials/dropDownDivision.php") ?>
                     <div>
                         <a href="/staff">
                             <button id="orderDropdownDefaultButton" data-dropdown-toggle="orderDropdown" class=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs p-2 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Reset List
@@ -44,9 +43,6 @@
                             </th>
                             <th scope="col" class="lg:px-6 lg:py-3  px-3 py-1">
                                 Coure and Year
-                            </th>
-                            <th scope="col" class="lg:px-6 lg:py-3  px-3 py-1">
-                                Division
                             </th>
                             <th scope="col" class="lg:px-6 lg:py-3  px-3 py-1">
                                 Status
@@ -74,10 +70,7 @@
                                     <?= $status[$x]["course"] ?> - <?= $status[$x]["year"] ?>
                                 </td>
                                 <td class="lg:px-6 lg:py-4 px-3 py-1">
-                                    <?= $status[$x]["divisionName"] ?>
-                                </td>
-                                <td class="lg:px-6 lg:py-4 px-3 py-1">
-                                    <?php if ($status[$x][$profile["officeName"]] == 0) : ?>
+                                    <?php if ($status[$x][$profile["dean"]] == 0) : ?>
                                         <span class="text-red-600">
                                             Pending
                                         </span>
@@ -88,12 +81,12 @@
                                     <?php endif; ?>
                                 </td>
                                 <td>
-                                    <?php if ($status[$x][$profile["officeName"]] == 0) : ?>
+                                    <?php if ($status[$x][$profile["dean"]] == 0) : ?>
                                         <form action="/staff/update" method="POST">
                                             <input type="hidden" name="_method" value="PATCH">
                                             <input type="hidden" name="value" id="" value="1">
                                             <input type="hidden" name="studentId" id="" value="<?= $status[$x]["studentId"] ?>">
-                                            <input type="hidden" name="office" id="" value="<?= $profile["officeName"] ?>">
+                                            <input type="hidden" name="office" id="" value="<?= $profile["dean"] ?>">
                                             <button type="submit" class="py-1 lg:px-5  px-2 me-2 mb-2 lg:text-sm text-xs font-medium  focus:outline-none bg-white rounded border border-gray-200 hover:bg-gray-100 text-green-600 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Approve</button>
                                         </form>
                                     <?php else : ?>
@@ -101,7 +94,7 @@
                                             <input type="hidden" name="_method" value="PATCH">
                                             <input type="hidden" name="value" id="" value="0">
                                             <input type="hidden" name="studentId" id="" value="<?= $status[$x]["studentId"] ?>">
-                                            <input type="hidden" name="office" id="" value="<?= $profile["officeName"] ?>">
+                                            <input type="hidden" name="office" id="" value="<?= $profile["dean"] ?>">
                                             <button type="submit" class="py-1 lg:px-5 px-2 me-2 mb-2 lg:text-sm text-xs  font-medium  focus:outline-none bg-white rounded border border-gray-200 hover:bg-gray-100 text-red-600 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Disapprove</button>
                                         </form>
                                     <?php endif; ?>
