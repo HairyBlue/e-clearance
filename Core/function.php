@@ -51,6 +51,7 @@ function verify()
     $query = "SELECT level from Roles inner join Levels on level_id = levelId inner join Users on user_id = userId WHERE user_id = ?";
 
     $result =  database()->show($query, "i", [$userId]);
+    $_SESSION["user"]["level"] = strtolower($result[0]["level"]);
     // $stm = $db->mysqli->prepare($query);
     // $stm->bind_param("i", $userId);
     // $stm->execute();

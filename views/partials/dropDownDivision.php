@@ -11,7 +11,7 @@
 
                 <?php for ($x = 0; $x < count($division); $x++) : ?>
                     <li>
-                        <a href="/staff?division-name=<?= $division[$x]["divisionName"] ?>" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"> <?= $division[$x]["divisionName"] ?></a>
+                        <a href="/<?=$_SESSION["user"]["level"] ?>?division-name=<?= $division[$x]["divisionName"] ?>" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"> <?= $division[$x]["divisionName"] ?></a>
                     </li>
                 <?php endfor; ?>
             </ul>

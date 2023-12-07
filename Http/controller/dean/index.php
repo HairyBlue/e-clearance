@@ -1,5 +1,5 @@
 <?php
-
+    
 // dd($_GET);
 // QUERY PROFILE
 $profileQuery = "SELECT deanId, name, divisionName, divisionId from Deans
@@ -8,6 +8,7 @@ $profileQuery = "SELECT deanId, name, divisionName, divisionId from Deans
                 where dean_user_id = ?";
 
 $profile = database()->show($profileQuery, "i", [$_SESSION["user"]["_id"]]);
+
 
 // QUERY STUDENT STATUS
 $divisionId =  $profile[0]["divisionId"];
@@ -56,7 +57,7 @@ if (isset($_GET["student-year-level-order"])) {
                     on student_division_id = divisionId
                     where student_division_id = ? and DEAN  = ?";
 
-    $status = database()->show($statusQuery, "ii", [$isApproved, $divisionId]);
+    $status = database()->show($statusQuery, "ii", [$divisionId, $isApproved]);
 } else {
     $statusQuery = "SELECT dean, studentId, name, course, year from Students 
                     inner join Clearances 
@@ -73,7 +74,7 @@ $division = database()->show($divisionQuery);
 
 // dd($status);
 // dd($division);
-view("staff/index.view.php", [
+view("dean/index.view.php", [
     "profile" => $profile[0],
     "division" => $division,
     "status" => $status,
