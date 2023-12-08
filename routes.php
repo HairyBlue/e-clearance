@@ -13,3 +13,7 @@ $router->patch("/staff/update", "staff/update.php")->only("auth")->role("STAFF")
 
 $router->get("/dean", "dean/index.php")->only("auth")->role("DEAN");
 $router->patch("/dean/update", "dean/update.php")->only("auth")->role("DEAN");
+
+$router->get("/superadmin", "superadmin/index.php")->only("auth")->role("SUPERADMIN");
+$router->post("/superadmin/store", "superadmin/store.php")->only("auth")->role("SUPERADMIN");
+$router->delete("/superadmin/destroy", "superadmin/destroy.php")->only("auth")->role("SUPERADMIN");
