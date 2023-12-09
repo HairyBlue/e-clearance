@@ -64,38 +64,38 @@
     </form>
     <div class="overflow-x-auto shadow-md sm:rounded-lg border mt-4 p-4">
 
-    <div class="flex justify-between gap-4 mb-4">
-                <?php require base_path("views/partials/searchForm.php") ?>
-                <div class="flex gap-2">
-                     <div> <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs p-2 text-center inline-flex items-center" type="button">Filter by Division<svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
-                                </svg>
-                                </button>
+        <div class="flex justify-between gap-4 mb-4">
+            <?php require base_path("views/partials/searchForm.php") ?>
+            <div class="flex gap-2">
+                <div> <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs p-2 text-center inline-flex items-center" type="button">Filter by Division<svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                        </svg>
+                    </button>
 
-                 <!-- Dropdown menu -->
-                <div class="absolute">
-                      <div id="dropdown" class="z-10 hidden relative bg-white divide-gray-100 rounded-lg shadow w-32">
-                         <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownDefaultButton">
+                    <!-- Dropdown menu -->
+                    <div class="absolute">
+                        <div id="dropdown" class="z-10 hidden relative bg-white divide-gray-100 rounded-lg shadow w-32">
+                            <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownDefaultButton">
 
-                <?php foreach ($assigned as $assign) : ?>
-                    <li>
-                        <a href="/<?=$_SESSION["user"]["level"] ?>?division-name=<?= $assign["divisionName"] ?>" class="block px-4 py-2 hover:bg-gray-100"> <?= $assign["divisionName"] ?></a>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
-    </div>
-
-</div>
-                    <?php require base_path("views/partials/orderByYear.php") ?>
-                    <div>
-                        <a href="/<?=$_SESSION["user"]["level"] ?>">
-                            <button id="orderDropdownDefaultButton" data-dropdown-toggle="orderDropdown" class=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs p-2 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Reset List
-                            </button>
-                        </a>
+                                <?php foreach ($assigned as $assign) : ?>
+                                    <li>
+                                        <a href="/<?= $_SESSION["user"]["level"] ?>?division-name=<?= $assign["divisionName"] ?>" class="block px-4 py-2 hover:bg-gray-100"> <?= $assign["divisionName"] ?></a>
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
                     </div>
+
                 </div>
-            </div> 
+                <?php require base_path("views/partials/orderByYear.php") ?>
+                <div>
+                    <a href="/<?= $_SESSION["user"]["level"] ?>">
+                        <button id="orderDropdownDefaultButton" data-dropdown-toggle="orderDropdown" class=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs p-2 text-center inline-flex items-center" type="button">Reset List
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
 
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
@@ -153,7 +153,7 @@
             </tbody>
         </table>
     </div>
-</div>  
+</div>
 
 
 <div id="popup-remove-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed z-50 justify-center items-center w-full inset-0 min-h-full max-h-full border ">
@@ -167,6 +167,7 @@
                 <form action="/superadmin/destroy" method="POST">
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="userId" id="user-id" value="">
+                    <input type="hidden" name="user" value="student">
                     <button data-modal-hide="popup-modal" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300  font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
                         Yes, I' m sure </button>
                     <button onclick="cancelRemove()" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">No, cancel</button>

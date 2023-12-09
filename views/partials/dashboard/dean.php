@@ -1,5 +1,6 @@
 <div class="p-2 h-fit mb-4 rounded bg-gray-50 ">
     <form action="/superadmin/store" method="POST" class="lg:w-3/5 w-full">
+        <input type="hidden" name="user" value="dean">
         <div class="space-y-12">
             <div class="border-b border-gray-900/10 pb-4">
                 <h2 class="text-base font-semibold leading-7 text-gray-900">Registration for Dean</h2>
@@ -114,6 +115,7 @@
                 <form action="/superadmin/destroy" method="POST">
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="userId" id="user-id" value="">
+                    <input type="hidden" name="user" value="dean">
                     <button data-modal-hide="popup-modal" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300  font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
                         Yes, I' m sure </button>
                     <button onclick="cancelRemove()" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">No, cancel</button>

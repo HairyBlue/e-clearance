@@ -9,10 +9,10 @@
         <div id="orderDropdown" class="z-10 hidden relative bg-white divide-gray-100 rounded-lg shadow w-28 ">
             <ul class="py-2 text-sm text-gray-700 " aria-labelledby="orderDropdownDefaultButton">
                 <li>
-                    <a href="/<?=$_SESSION["user"]["level"] ?>?student-year-level-order=ascending" class="block px-4 py-2 hover:bg-gray-100 ">Ascending</a>
+                    <a href="/<?= $_SESSION["user"]["level"] ?>?student-year-level-order=ascending" class="block px-4 py-2 hover:bg-gray-100 ">Ascending</a>
                 </li>
                 <li>
-                    <a href="/<?=$_SESSION["user"]["level"] ?>?student-year-level-order=descending" class="block px-4 py-2 hover:bg-gray-100">Descending</a>
+                    <a href="/<?= $_SESSION["user"]["level"] ?>?student-year-level-order=descending" class="block px-4 py-2 hover:bg-gray-100">Descending</a>
                 </li>
             </ul>
         </div>

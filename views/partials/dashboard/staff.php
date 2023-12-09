@@ -1,5 +1,6 @@
 <div class="p-2 h-fit mb-4 rounded bg-gray-50 ">
     <form action="/superadmin/store" method="POST" class="lg:w-3/5 w-full">
+        <input type="hidden" name="user" value="staff">
         <div class="space-y-12">
             <div class="border-b border-gray-900/10 pb-4">
                 <h2 class="text-base font-semibold leading-7 text-gray-900">Registration for Staff</h2>
@@ -31,7 +32,7 @@
                         <div class="mt-2">
                             <label for="division" class="block text-sm font-medium leading-6 text-gray-900">Office</label>
                             <div class="mt-1">
-                                <select id="division" name="division" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                                <select id="division" name="office" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
                                     <option disabled selected>choose a office</option>
                                     <?php foreach ($assigned as $assign) : ?>
                                         <option value="<?= $assign['officeId'] ?>"><?= $assign['officeName'] ?></option>
@@ -114,6 +115,7 @@
                 <form action="/superadmin/destroy" method="POST">
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="userId" id="user-id" value="">
+                    <input type="hidden" name="user" value="staff">
                     <button data-modal-hide="popup-modal" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300  font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
                         Yes, I' m sure </button>
                     <button onclick="cancelRemove()" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">No, cancel</button>

@@ -7,7 +7,7 @@
                     <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight"><?= htmlspecialchars($profile["name"]) ?></h2>
                     <form action="/logout" method="POST">
                         <input type="hidden" name="_method" value="DELETE">
-                        <button type="submit" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Logout</button>
+                        <button type="submit" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 ">Logout</button>
                     </form>
                 </div>
                 <div class="flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6">
@@ -28,15 +28,15 @@
                     <?php require base_path("views/partials/orderByYear.php") ?>
                     <div>
                         <a href="/<?=$_SESSION["user"]["level"] ?>">
-                            <button id="orderDropdownDefaultButton" data-dropdown-toggle="orderDropdown" class=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs p-2 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Reset List
+                            <button id="orderDropdownDefaultButton" data-dropdown-toggle="orderDropdown" class=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs p-2 text-center inline-flex items-center " type="button">Reset List
                             </button>
                         </a>
                     </div>
                 </div>
             </div>
             <div class="h-[500px] relative max-lg:overflow-x-scroll overflow-y-scroll">
-                <table class="w-full lg:text-sm text-xs text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                    <thead class="lg:text-base text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <table class="w-full lg:text-sm text-xs text-left rtl:text-right text-gray-500 ">
+                    <thead class="lg:text-base text-xs text-gray-700 uppercase bg-gray-50">
                         <tr>
                             <th scope="col" class="lg:px-6 lg:py-3  px-3 py-1">
                                 Student Name
@@ -48,7 +48,7 @@
                                 Status
                             </th>
                             <th>
-                                <button class="y-1 lg:px-5 px-2 lg:text-sm text-xs font-medium  focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 rounded-lg p-2 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Total: <?= $count ?>
+                                <button class="y-1 lg:px-5 px-2 lg:text-sm text-xs font-medium  focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 rounded-lg p-2 text-center inline-flex items-center " type="button">Total: <?= $count ?>
                                 </button>
                             </th>
                             <!-- <th scope="col" class="px-6 py-3">
@@ -87,7 +87,7 @@
                                             <input type="hidden" name="value" id="" value="1">
                                             <input type="hidden" name="studentId" id="" value="<?= $status[$x]["studentId"] ?>">
                                             <input type="hidden" name="office" id="" value="dean">
-                                            <button type="submit" class="py-1 lg:px-5  px-2 me-2 mb-2 lg:text-sm text-xs font-medium  focus:outline-none bg-white rounded border border-gray-200 hover:bg-gray-100 text-green-600 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Approve</button>
+                                            <button type="submit" class="py-1 lg:px-5  px-2 me-2 mb-2 lg:text-sm text-xs font-medium  focus:outline-none bg-white rounded border border-gray-200 hover:bg-gray-100 text-green-600 focus:z-10 focus:ring-4 focus:ring-gray-200 ">Approve</button>
                                         </form>
                                     <?php else : ?>
                                         <form action="/<?=$_SESSION["user"]["level"] ?>/update" method="POST">
@@ -95,7 +95,7 @@
                                             <input type="hidden" name="value" id="" value="0">
                                             <input type="hidden" name="studentId" id="" value="<?= $status[$x]["studentId"] ?>">
                                             <input type="hidden" name="office" id="" value="dean">
-                                            <button type="submit" class="py-1 lg:px-5 px-2 me-2 mb-2 lg:text-sm text-xs  font-medium  focus:outline-none bg-white rounded border border-gray-200 hover:bg-gray-100 text-red-600 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Disapprove</button>
+                                            <button type="submit" class="py-1 lg:px-5 px-2 me-2 mb-2 lg:text-sm text-xs  font-medium  focus:outline-none bg-white rounded border border-gray-200 hover:bg-gray-100 text-red-600 focus:z-10 focus:ring-4 focus:ring-gray-200">Disapprove</button>
                                         </form>
                                     <?php endif; ?>
 

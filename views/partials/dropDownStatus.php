@@ -9,10 +9,10 @@
         <div id="statusDropdown" class="z-10 hidden relative bg-white divide-gray-100 rounded-lg shadow w-28 ">
             <ul class="py-2 text-sm text-gray-700 " aria-labelledby="statusDropdownDefaultButton">
                 <li>
-                    <a href="/<?=$_SESSION["user"]["level"]?>?status=approved" class="block px-4 py-2 hover:bg-gray-100 ">Approved</a>
+                    <a href="/<?= $_SESSION["user"]["level"] ?>?status=approved" class="block px-4 py-2 hover:bg-gray-100 ">Approved</a>
                 </li>
                 <li>
-                    <a href="/<?=$_SESSION["user"]["level"]?>?status=pending" class="block px-4 py-2 hover:bg-gray-100 ">Pending</a>
+                    <a href="/<?= $_SESSION["user"]["level"] ?>?status=pending" class="block px-4 py-2 hover:bg-gray-100 ">Pending</a>
                 </li>
             </ul>
         </div>

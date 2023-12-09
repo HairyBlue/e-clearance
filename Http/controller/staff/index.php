@@ -44,15 +44,17 @@ if (isset($_GET["division-name"])) {
                             ORDER by year desc";
         $status = database()->show($statusQuery);
     }
-} elseif (isset($_GET["student-name"])) {
+} elseif (isset($_GET["studentname-or-email"])) {
     $statusQuery = "SELECT $office, studentId, name, course, year, divisionName from Students 
+                    inner join Users
+                    on student_user_id = userId
                     inner join Clearances 
                     on studentId = student_id
                     inner join Divisions
                     on student_division_id = divisionId
-                    where name LIKE ?";
+                    where name LIKE ? or email LIKE ?";
 
-    $status = database()->show($statusQuery, "s", ["%" . $_GET["student-name"] . "%"]);
+    $status = database()->show($statusQuery, "ss", ["%" . $_GET["studentname-or-email"] . "%", "%" . $_GET["studentname-or-email"] . "%"]);
 } elseif (isset($_GET["status"])) {
     $isApproved = 0;
     if ($_GET["status"] == "approved") $isApproved = 1;

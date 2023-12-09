@@ -58,7 +58,6 @@ class Router
     {
         foreach ($this->routes as $route) {
             if ($route["uri"] === $uri && $route["method"] === strtoupper($method)) {
-
                 if ($route["middleware"]) {
                     if ($route["role"]) {
                         if (verify() == $route["role"]) {

@@ -26,13 +26,13 @@ class Database
         }
     }
 
-    // public function create($query, $datatype = "",  $params = [])
-    // {
-    //     $stmt =  $this->mysqli->prepare($query);
-    //     $stmt->bind_param($datatype, ...$params);
-    //     return $stmt->execute();
-    //     // return $this->mysqli->insert_id;
-    // }
+    public function create($query, $datatype = "",  $params = [])
+    {
+        $stmt =  $this->mysqli->prepare($query);
+        $stmt->bind_param($datatype, ...$params);
+        $stmt->execute();
+        return $stmt->insert_id;
+    }
 
     public function update($query, $datatype = "", $params = [])
     {
@@ -42,7 +42,12 @@ class Database
             $stmt =  $this->mysqli->prepare($query);
             $stmt->bind_param($datatype, ...$params);
             $stmt->execute();
-            // return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         }
+    }
+    public function destroy($query, $datatype = "",  $params = [])
+    {
+        $stmt =  $this->mysqli->prepare($query);
+        $stmt->bind_param($datatype, ...$params);
+        $stmt->execute();
     }
 }

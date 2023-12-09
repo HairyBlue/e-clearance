@@ -47,11 +47,11 @@ function showStudent()
                             inner join Divisions
                             on student_division_id = divisionId
                             ORDER by year asc";
-    
+
             $info = database()->show($query);
         }
         if ($_GET["student-year-level-order"] == "descending") {
-    
+
             $query = "SELECT email, name, course, year, divisionName, login, userId, studentId from   Students
                             inner join Users
                             on student_user_id = userId
@@ -60,27 +60,25 @@ function showStudent()
                             ORDER by year desc";
             $info = database()->show($query);
         }
-    } elseif (isset($_GET["student-name"])) {
+    } elseif (isset($_GET["studentname-or-email"])) {
         $query = "SELECT email, name, course, year, divisionName, login, userId, studentId from   Students
                         inner join Users
                         on student_user_id = userId
                         inner join Divisions
                         on student_division_id = divisionId
-                        where name LIKE ?";
-    
-        $info = database()->show($query, "s", ["%" . $_GET["student-name"] . "%"]);
+                        where name LIKE ? or email LIKE ?";
 
-    } elseif(isset($_GET["division-name"])){
-            $query = "SELECT email, name, course, year, divisionName, login, userId, studentId from   Students
+        $info = database()->show($query, "ss", ["%" . $_GET["studentname-or-email"] . "%", "%" . $_GET["studentname-or-email"] . "%"]);
+    } elseif (isset($_GET["division-name"])) {
+        $query = "SELECT email, name, course, year, divisionName, login, userId, studentId from   Students
                             inner join Users
                             on student_user_id = userId
                             inner join Divisions
                             on student_division_id = divisionId
                             WHERE divisionName = ?";
-    
-            $info = database()->show($query, "s", [$_GET["division-name"]]);
 
-    }  else {
+        $info = database()->show($query, "s", [$_GET["division-name"]]);
+    } else {
         $query = "SELECT email, name, course, year, divisionName, login, userId, studentId from   Students
                         inner join Users
                         on student_user_id = userId
@@ -94,15 +92,16 @@ function showStudent()
 }
 
 
-function resolve($paths){
+function resolve($paths)
+{
 
-    if($paths == "student"){
+    if ($paths == "student") {
         return showStudent();
     }
-    if($paths == "dean"){
+    if ($paths == "dean") {
         return showDean();
     }
-    if($paths == "staff"){
+    if ($paths == "staff") {
         return showStaff();
     }
 }

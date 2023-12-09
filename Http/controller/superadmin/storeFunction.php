@@ -1,31 +1,75 @@
-<?php 
+<?php
 
-function storeStudent($data){
+function storeStudent($post)
+{
+    try {
+        $userId  = addUser($post, 6);
 
-    // dd($data);
-    // $email = $data['email'];
-    // $password = $data['password'];
-    // $name = $data['name'];
-    // $course = $data['course'];
-    // $year = $data['year'];
-    // $divisionId = $data['division'];
+        $studentQuery = "INSERT INTO Students (name, course, year, student_division_id, student_user_id) value (?, ?,?,?,?)";
+        $studentId = database()->create($studentQuery, "ssiii", [$post["name"], $post["course"], $post["year"], $post["division"], $userId]);
 
-    // $userSql = "INSERT INTO Users (email, password) values ('{$email}', '{$password}')";
-    // $userId =  $this->addUser($userSql, 6);
-    //  database()->
+        $clearanceQuery = "INSERT INTO Clearances (student_id) value (?)";
+        database()->create($clearanceQuery, "i", [$studentId]);
+    } catch (Exception $e) {
+        echo "\nException caught: " . $e->getMessage() . PHP_EOL;
+    }
+}
+function storeDean($post)
+{
+    try {
+        $userId  = addUser($post, 4);
 
-    // $studentSql = "INSERT INTO Students (name, course, year, student_division_id, student_user_id) values ('{$name}', '{$course}', {$year}, {$divisionId}, {$userId})";
-    // $this->db->query($studentSql);
-    // $studentId = $this->db->insert_id;
+        $deanQuery = "INSERT INTO Deans (name, dean_division_id, dean_user_id) value (?,?,?)";
+        database()->create($deanQuery, "sii", [$post["name"], $post["division"], $userId]);
+    } catch (Exception $e) {
+        echo "\nException caught: " . $e->getMessage() . PHP_EOL;
+    }
+}
 
-    // $clearanceSql = "INSERT INTO Clearances (student_id) values ({$studentId})";
-    // $this->db->query($clearanceSql);
+function storeStaff($post)
+{
+    try {
+        $userId  = addUser($post, 5);
+        $staffQuery = "INSERT INTO Staffs (name, staff_office_id, staff_user_id) value (?,?,?)";
+        database()->create($staffQuery, "sii", [$post["name"], $post["office"], $userId]);
+    } catch (Exception $e) {
+        echo "\nException caught: " . $e->getMessage() . PHP_EOL;
+    }
 }
 
 
-function store($post = []){
-    if($post["user"] == "student"){
-        storeStudent($post);
-    }
 
+function addUser($post, $level)
+{
+    $query = "INSERT INTO Users (email, password) value (?,?)";
+    $userId = database()->create($query, "ss", [$post["email"], $post["password"]]);
+    addRole($userId, $level);
+
+    return $userId;
+}
+function addRole($userId, $level)
+{
+    $query = "INSERT INTO Roles (user_id, level_id) value(?,?)";
+    database()->create($query, "ii", [$userId, $level]);
+}
+
+
+
+function store($post = [])
+{
+    if ($post["user"] == "student") {
+        storeStudent($post);
+        $uri = $_SESSION["user"]["level"] . "?path=student";
+        redirect("/$uri");
+    }
+    if ($post["user"] == "dean") {
+        storeDean($post);
+        $uri = $_SESSION["user"]["level"] . "?path=dean";
+        redirect("/$uri");
+    }
+    if ($post["user"] == "staff") {
+        storeStaff($post);
+        $uri = $_SESSION["user"]["level"] . "?path=staff";
+        redirect("/$uri");
+    }
 }

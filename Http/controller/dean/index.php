@@ -1,5 +1,5 @@
 <?php
-    
+
 // dd($_GET);
 // QUERY PROFILE
 $profileQuery = "SELECT deanId, name, divisionName, divisionId from Deans
@@ -36,15 +36,17 @@ if (isset($_GET["student-year-level-order"])) {
                             ORDER by year desc";
         $status = database()->show($statusQuery, "i", [$divisionId]);
     }
-} elseif (isset($_GET["student-name"])) {
+} elseif (isset($_GET["studentname-or-email"])) {
     $statusQuery = "SELECT dean, studentId, name, course, year from Students 
+                    inner join Users
+                    on student_user_id = userId
                     inner join Clearances 
                     on studentId = student_id
                     inner join Divisions
                     on student_division_id = divisionId
-                    where student_division_id = ? and name LIKE ?";
+                    where student_division_id = ? and name LIKE ? or email LIKE ?";
 
-    $status = database()->show($statusQuery, "is", [$divisionId, "%" . $_GET["student-name"] . "%"]);
+    $status = database()->show($statusQuery, "iss", [$divisionId, "%" . $_GET["studentname-or-email"] . "%",  "%" . $_GET["studentname-or-email"] . "%"]);
 } elseif (isset($_GET["status"])) {
     $isApproved = 0;
     if ($_GET["status"] == "approved") $isApproved = 1;
@@ -67,7 +69,7 @@ if (isset($_GET["student-year-level-order"])) {
                     where student_division_id = ?";
     $status = database()->show($statusQuery, "i", [$divisionId]);
 }
-   
+
 // QUERY DIVISION
 $divisionQuery = "SELECT * from Divisions";
 $division = database()->show($divisionQuery);

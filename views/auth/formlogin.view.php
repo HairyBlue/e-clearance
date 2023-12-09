@@ -16,12 +16,12 @@
                 </label>
                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************" name="password" required>
             </div>
-            <div class="flex items-center justify-between">
-                <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+            <div class="flex flex-col items-center justify-between">
+                <button class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline" type="submit">
                     Sign In
                 </button>
-                <a class="inline-block align-baseline font-bold text-sm text-indigo-500 hover:text-indigo-800" href="#">
-                    Dont have an account?
+                <a class="mt-4 inline-block align-baseline font-bold text-xs text-indigo-500 hover:text-indigo-800 " href="https://www.facebook.com/cjcACSS" target="_blank">
+                    Request here if you dont have an account
                 </a>
             </div>
         </form>

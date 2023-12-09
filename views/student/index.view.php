@@ -7,7 +7,7 @@
                     <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight"><?= htmlspecialchars($profile["name"]) ?></h2>
                     <form action="/logout" method="POST">
                         <input type="hidden" name="_method" value="DELETE">
-                        <button type="submit" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Logout</button>
+                        <button type="submit" class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 ">Logout</button>
                     </form>
                 </div>
 
@@ -18,7 +18,7 @@
                         <?= htmlspecialchars($profile["course"]) ?> -
                         <?= htmlspecialchars($profile["year"]) ?>
                     </div>
-                    <div class="mt-2 flex items-center text-sm text-gray-700">
+                    <div class="flex items-center text-sm text-gray-700">
                         <p class="mr-2 font-semibold">Division: </p>
                         <?= htmlspecialchars($profile["divisionName"]) ?>
                     </div>
@@ -29,8 +29,8 @@
         <div class="mt-4 lg:pr-8 lg:pl-8">
             <h3 class="font-bold text-4xl mb-4">Clearance Status</h3>
             <div class="relative overflow-x-auto">
-                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
                         <tr>
                             <th scope="col" class="px-6 py-3">
                                 Office name
@@ -50,8 +50,8 @@
                     </thead>
                     <tbody>
                         <?php foreach ($status as $key => $val) : ?>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <th scope="row" class="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap dark:text-white">
+                            <tr class="bg-white border-b ">
+                                <th scope="row" class="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap ">
                                     <?= $key ?>
                                 </th>
                                 <td class="px-6 py-4">

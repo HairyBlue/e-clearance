@@ -1,4 +1,4 @@
-<?php require "partials/head.php"?>
+<?php require "partials/head.php" ?>
 
 <main class="w-full h-screen">
 
@@ -30,4 +30,4 @@
     </div>
 </main>
 
-<?php require "partials/footer.php"?>
+<?php require "partials/footer.php" ?>

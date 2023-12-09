@@ -46,15 +46,22 @@ function database()
 function verify()
 {
 
-    $userId = $_SESSION["user"]["_id"];
+    try {
+        $userId = $_SESSION["user"]["_id"];
 
-    $query = "SELECT level from Roles inner join Levels on level_id = levelId inner join Users on user_id = userId WHERE user_id = ?";
-
-    $result =  database()->show($query, "i", [$userId]);
-    $_SESSION["user"]["level"] = strtolower($result[0]["level"]);
-    // $stm = $db->mysqli->prepare($query);
-    // $stm->bind_param("i", $userId);
-    // $stm->execute();
-    // $result = $stm->get_result()->fetch_all(MYSQLI_ASSOC);
-    return $result[0]["level"];
+        $verifyIfRegister = "SELECT * from Users where userId = ?";
+        $verifyResult =  database()->show($verifyIfRegister, "i", [$userId]);
+        if (count($verifyResult) == 0) {
+            $_SESSION = [];
+            session_destroy();
+            redirect("/login");
+        } else {
+            $query = "SELECT level from Roles inner join Levels on level_id = levelId inner join Users on user_id = userId WHERE user_id = ?";
+            $result =  database()->show($query, "i", [$userId]);
+            $_SESSION["user"]["level"] = strtolower($result[0]["level"]);
+            return $result[0]["level"];
+        }
+    } catch (Exception $e) {
+        echo "\nException caught: " . $e->getMessage() . PHP_EOL;
+    }
 }
