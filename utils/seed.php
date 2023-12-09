@@ -113,6 +113,7 @@ class Seed
         // $this->dd($this->userData["student"]);
         try {
             foreach ($this->userData["student"] as $student) {
+                
                 $email = $student['email'];
                 $password = $student['password'];
                 $name = $student['name'];

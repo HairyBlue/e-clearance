@@ -91,7 +91,7 @@
                             <?php endif; ?>
                         </td>
                         <td class="px-6 py-4">
-                            <button onclick="deleteDean(<?= $info['userId'] ?> , '<?= $info['name'] ?>')" type="button" class="text-white bg-red-500 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300  font-medium rounded text-sm inline-flex items-center px-2 py-1 text-center">
+                            <button onclick="deleteUser(<?= $info['userId'] ?> , '<?= $info['name'] ?>')" type="button" class="text-white bg-red-500 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300  font-medium rounded text-sm inline-flex items-center px-2 py-1 text-center">
                                 Remove
                             </button>
                         </td>
@@ -124,57 +124,5 @@
     </div>
 </div>
 
-
-<div id="popup-edit-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed z-50 justify-center items-center w-full inset-0 min-h-full max-h-full border ">
-    <form action="/superadmin/store" method="POST" class="lg:w-3/5 w-full">
-        <div class="space-y-12">
-            <div class="border-b border-gray-900/10 pb-4">
-                <h2 class="text-base font-semibold leading-7 text-gray-900">Registration for Dean</h2>
-                <p class="text-sm leading-6 text-gray-600"><span class="font-medium">Note: </span>Use a valid email from the dean for their registration. This will be used to notify them after registration.</p>
-
-                <div class="flex justify-between gap-x-6 mt-4">
-                    <div class="w-1/2">
-                        <div>
-                            <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
-                            <div class="mt-1">
-                                <input id="email" name="email" type="email" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                            </div>
-                        </div>
-                        <div class="mt-2">
-                            <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
-                            <div class="mt-1">
-                                <input id="password" name="password" type="password" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="w-1/2">
-                        <div>
-                            <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Fullname</label>
-                            <div class="mt-1">
-                                <input type="text" name="name" id="name" required class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                            </div>
-                        </div>
-                        <div class="mt-2">
-                            <label for="division" class="block text-sm font-medium leading-6 text-gray-900">Division</label>
-                            <div class="mt-1">
-                                <select id="division" name="division" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                                    <option disabled selected>choose a division</option>
-                                    <?php foreach ($divisions as $division) : ?>
-                                        <option value="<?= $division['divisionId'] ?>"><?= $division['divisionName'] ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="mt-6 flex items-center justify-end max-md:justify-center gap-x-6">
-            <button type="button" class="text-sm font-semibold leading-6 text-gray-900"><a href="/superadmin">Cancel</a></button>
-            <button type="submit" class="rounded-md bg-indigo-600 px-6 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Register</button>
-        </div>
-    </form>
-</div>
 
 <script src="assets/js/dashboard/modal.js"></script>

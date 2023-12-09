@@ -1,2 +1,5 @@
 <?php
-dd($_POST);
+
+require "storeFunction.php";
+
+store($_POST);

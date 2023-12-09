@@ -91,7 +91,7 @@
                             <?php endif; ?>
                         </td>
                         <td class="px-6 py-4">
-                            <button onclick="deleteDean(<?= $info['userId'] ?> , '<?= $info['name'] ?>')" type="button" class="text-white bg-red-500 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300  font-medium rounded text-sm inline-flex items-center px-2 py-1 text-center">
+                            <button onclick="deleteUser(<?= $info['userId'] ?> , '<?= $info['name'] ?>')" type="button" class="text-white bg-red-500 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300  font-medium rounded text-sm inline-flex items-center px-2 py-1 text-center">
                                 Remove
                             </button>
                         </td>

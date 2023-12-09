@@ -2,7 +2,7 @@ const uservalueId= document.querySelector("#user-id");
 const userName = document.querySelector("#user-name");
 const popmodal = document.querySelector("#popup-remove-modal")
 
-function deleteDean(userId, name) {
+function deleteUser(userId, name) {
     popmodal.classList.remove("hidden");
     popmodal.classList.add("flex");
     userName.textContent = name;
