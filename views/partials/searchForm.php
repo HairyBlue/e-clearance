@@ -1,4 +1,4 @@
-<div class="w-1/2">
+<div class=" w-full sm:w-1/2">
     <form action="/<?= $_SESSION["user"]["level"] ?>">
         <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
         <div class="relative">

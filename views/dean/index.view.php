@@ -26,12 +26,7 @@
                 <div class="flex gap-2">
                     <?php require base_path("views/partials/dropDownStatus.php") ?>
                     <?php require base_path("views/partials/orderByYear.php") ?>
-                    <div>
-                        <a href="/<?=$_SESSION["user"]["level"] ?>">
-                            <button id="orderDropdownDefaultButton" data-dropdown-toggle="orderDropdown" class=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs p-2 text-center inline-flex items-center " type="button">Reset List
-                            </button>
-                        </a>
-                    </div>
+                    <?php require base_path("views/partials/resetPartial.php") ?>
                 </div>
             </div>
             <div class="h-[500px] relative max-lg:overflow-x-scroll overflow-y-scroll">
@@ -41,7 +36,7 @@
                             <th scope="col" class="lg:px-6 lg:py-3  px-3 py-1">
                                 Student Name
                             </th>
-                            <th scope="col" class="lg:px-6 lg:py-3  px-3 py-1">
+                            <th scope="col" class="lg:px-6 lg:py-3  px-2 py-1">
                                 Coure and Year
                             </th>
                             <th scope="col" class="lg:px-6 lg:py-3  px-3 py-1">

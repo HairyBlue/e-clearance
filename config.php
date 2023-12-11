@@ -4,7 +4,7 @@ return [
     "database" => [
         "localhost",
         "root",
-        "Hairyblue",
+        "",
         "clearancesystem",
         3306
     ]

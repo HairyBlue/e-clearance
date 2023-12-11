@@ -67,7 +67,7 @@
         <div class="flex justify-between gap-4 mb-4">
             <?php require base_path("views/partials/searchForm.php") ?>
             <div class="flex gap-2">
-                <div> <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs p-2 text-center inline-flex items-center" type="button">Filter by Division<svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <div> <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs p-2 text-center inline-flex items-center" type="button"><span class="sm:hidden">Division</span> <span class="max-sm:hidden">Filter by Division</span> <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                         </svg>
                     </button>
@@ -88,12 +88,7 @@
 
                 </div>
                 <?php require base_path("views/partials/orderByYear.php") ?>
-                <div>
-                    <a href="/<?= $_SESSION["user"]["level"] ?>">
-                        <button id="orderDropdownDefaultButton" data-dropdown-toggle="orderDropdown" class=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs p-2 text-center inline-flex items-center" type="button">Reset List
-                        </button>
-                    </a>
-                </div>
+                <?php require base_path("views/partials/resetPartial.php") ?>
             </div>
         </div>
 
