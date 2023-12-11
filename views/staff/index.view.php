@@ -27,12 +27,7 @@
                     <?php require base_path("views/partials/dropDownStatus.php") ?>
                     <?php require base_path("views/partials/orderByYear.php") ?>
                     <?php require base_path("views/partials/dropDownDivision.php") ?>
-                    <div>
-                        <a href="/<?= $_SESSION["user"]["level"] ?>">
-                            <button id="orderDropdownDefaultButton" data-dropdown-toggle="orderDropdown" class=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs p-2 text-center inline-flex items-center " type="button">Reset List
-                            </button>
-                        </a>
-                    </div>
+                    <?php require base_path("views/partials/resetPartial.php") ?>
                 </div>
             </div>
             <div class="h-[500px] relative max-lg:overflow-x-scroll overflow-y-scroll">
@@ -70,7 +65,7 @@
                                 <th scope="row" class="lg:px-6 lg:py-4 px-3 py-1 font-semibold text-gray-900 whitespace-nowrap ">
                                     <?= $status[$x]["name"] ?>
                                 </th>
-                                <td class="lg:px-6 lg:py-4 px-3 py-1">
+                                <td class="lg:px-6 lg:py-4 px-2 py-1">
                                     <?= $status[$x]["course"] ?> - <?= $status[$x]["year"] ?>
                                 </td>
                                 <td class="lg:px-6 lg:py-4 px-3 py-1">
