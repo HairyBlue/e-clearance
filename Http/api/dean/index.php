@@ -7,7 +7,7 @@ $profileQuery = "SELECT deanId, name, divisionName, divisionId from Deans
                 on dean_division_id = divisionId
                 where dean_user_id = ?";
 
-$profile = database()->show($profileQuery, "i", [$_SESSION["user"]["_id"]]);
+$profile = database()->show($profileQuery, "i", [validateToken()]);
 
 
 // QUERY STUDENT STATUS
@@ -74,11 +74,11 @@ if (isset($_GET["student-year-level-order"])) {
 $divisionQuery = "SELECT * from Divisions";
 $division = database()->show($divisionQuery);
 
-// dd($status);
-// dd($division);
-view("dean/index.view.php", [
+http_response_code(200);
+echo json_encode([
     "profile" => $profile[0],
     "division" => $division,
     "status" => $status,
     "count" => count($status),
 ]);
+exit;

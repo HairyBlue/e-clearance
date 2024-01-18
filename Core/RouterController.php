@@ -2,7 +2,7 @@
 
 namespace Core;
 
-class Router
+class RouterController
 {
 
     protected $routes = [];

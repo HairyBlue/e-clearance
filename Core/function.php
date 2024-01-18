@@ -1,5 +1,8 @@
 <?php
 
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+
 function dd($value)
 {
     echo "<pre>";
@@ -43,12 +46,34 @@ function database()
     return new \Core\Database(...$config["database"]);
 }
 
+function validateToken()
+{
+    if (!isset($_SERVER['HTTP_AUTHORIZATION'])) {
+        http_response_code(401);
+        echo json_encode(['error' => 'Warning! Unauthorized']);
+        exit;
+    }
+    try {
+        $bearer = $_SERVER['HTTP_AUTHORIZATION'];
+        list(, $token) = explode(" ", $bearer);
+        $secretKey = "SECRET_KEY";
+
+        // Decode and verify the JWT using the provided secret key
+        $decoded = JWT::decode($token, new Key($secretKey, 'HS256'));
+        // The token is valid; you can access the decoded claims in $decoded
+        return $decoded->user_id;
+    } catch (Exception $e) {
+        // An error occurred, and the token is invalid
+        return false;
+    }
+}
+
 function verify()
 {
 
     try {
-        $userId = $_SESSION["user"]["_id"];
 
+        $userId = $_SESSION["user"]["_id"];
         $verifyIfRegister = "SELECT * from Users where userId = ?";
         $verifyResult =  database()->show($verifyIfRegister, "i", [$userId]);
         if (count($verifyResult) == 0) {
